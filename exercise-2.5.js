@@ -1,6 +1,30 @@
 import { readFile, writeFile } from 'node:fs/promises'
+import { question } from 'readline-sync'
 
 const filename = 'guestbook.txt'
+
+// Starta programmet med menyn
+menu()
+
+async function menu() {
+	console.log('\nWelcome to the guestbook! Choose an option:')
+	console.log('1. View guestbook')
+	console.log('2. Add a new name')
+	console.log('3. Clear the guestbook')
+	console.log('4. Exit')
+
+	let chosen = question('? ')
+
+	if( chosen === '1' ) {
+		await printGuestbook()
+	}
+	else if( chosen === '4' ) {
+		console.log('Welcome back...')
+		return
+	}
+	// Rekursiv funktion - menu anropar sig själv
+	menu()
+}
 
 async function printGuestbook() {
 	let buffer = await readFile(filename)
@@ -17,9 +41,9 @@ async function addToGuestbook(newName) {
 	await writeFile(filename, contents + '\n' + newName)
 }
 
-await writeGuestbook('Ann-Sophie')
-await addToGuestbook('Viktor')
-await printGuestbook()
+// await writeGuestbook('Ann-Sophie')
+// await addToGuestbook('Viktor')
+// await printGuestbook()
 
 /*
 5 Skapa en fil med namnet "guestbook.txt" och skriv ditt namn på första raden i den.Skriv ett skript som skriver ut innehållet i gästboken på konsolen.

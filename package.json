@@ -7,7 +7,13 @@
   "scripts": {
     "start": "node exercise-2.5.js"
   },
-  "keywords": ["node", "file"],
+  "keywords": [
+    "node",
+    "file"
+  ],
   "author": "David Andersson",
-  "license": "ISC"
+  "license": "ISC",
+  "dependencies": {
+    "readline-sync": "^1.4.10"
+  }
 }
