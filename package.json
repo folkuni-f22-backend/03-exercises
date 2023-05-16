@@ -1,0 +1,13 @@
+{
+  "name": "03-exercises",
+  "version": "1.0.0",
+  "description": "Exercises file read/write",
+  "type": "module",
+  "main": "index.js",
+  "scripts": {
+    "start": "node exercise-2.5.js"
+  },
+  "keywords": ["node", "file"],
+  "author": "David Andersson",
+  "license": "ISC"
+}
