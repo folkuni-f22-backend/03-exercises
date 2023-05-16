@@ -1,4 +1,4 @@
-import { readFile } from 'node:fs/promises'
+import { readFile, writeFile } from 'node:fs/promises'
 
 const filename = 'guestbook.txt'
 
@@ -6,10 +6,20 @@ async function printGuestbook() {
 	let buffer = await readFile(filename)
 	let contents = buffer.toString()
 	// String(buffer) eller buffer + ''
-	console.log('Printing guestbook:\n' , contents)
+	console.log('Printing guestbook:\n' + contents)
+}
+async function writeGuestbook(newName) {
+	await writeFile(filename, newName)
+}
+async function addToGuestbook(newName) {
+	let buffer = await readFile(filename)
+	let contents = buffer.toString()
+	await writeFile(filename, contents + '\n' + newName)
 }
 
-printGuestbook()
+await writeGuestbook('Ann-Sophie')
+await addToGuestbook('Viktor')
+await printGuestbook()
 
 /*
 5 Skapa en fil med namnet "guestbook.txt" och skriv ditt namn på första raden i den.Skriv ett skript som skriver ut innehållet i gästboken på konsolen.
